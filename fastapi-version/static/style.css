@@ -1,0 +1,173 @@
+/* Custom CSS for Weather Dashboard */
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.weather-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.weather-card .card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.weather-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1rem 1.5rem;
+}
+
+.weather-card .card-body {
+    padding: 1.5rem;
+}
+
+.temperature-display {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.temperature {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    line-height: 1;
+}
+
+.unit {
+    font-size: 1.2rem;
+    color: #666;
+    margin-left: 0.25rem;
+}
+
+.weather-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.condition {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.weather-details {
+    margin-top: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.detail-item span {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.1rem;
+}
+
+.detail-item strong {
+    font-size: 1rem;
+    color: #333;
+}
+
+.last-updated {
+    margin-top: 1rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.refresh-btn {
+    transition: transform 0.2s ease;
+}
+
+.refresh-btn:hover {
+    transform: rotate(180deg);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.loading .card-header {
+    background: rgba(108, 117, 125, 0.1);
+}
+
+/* HTMX loading indicators */
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+.htmx-request .refresh-btn {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.htmx-request .refresh-btn i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .temperature {
+        font-size: 2.5rem;
+    }
+    
+    .weather-icon {
+        font-size: 2rem;
+    }
+    
+    .detail-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Card loading animation */
+.weather-card.loading {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
